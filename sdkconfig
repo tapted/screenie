@@ -4429,8 +4429,7 @@ CONFIG_MQTT_TRANSPORT_WEBSOCKET_SECURE=y
 # CONFIG_MQTT_MSG_ID_INCREMENTAL is not set
 # default:
 # CONFIG_MQTT_SKIP_PUBLISH_IF_DISCONNECTED is not set
-# default:
-# CONFIG_MQTT_REPORT_DELETED_MESSAGES is not set
+CONFIG_MQTT_REPORT_DELETED_MESSAGES=y
 # default:
 # CONFIG_MQTT_USE_CUSTOM_CONFIG is not set
 # default:
@@ -4467,34 +4466,17 @@ CONFIG_LV_COLOR_DEPTH=16
 #
 # Memory Settings
 #
-# default:
-CONFIG_LV_USE_BUILTIN_MALLOC=y
-# default:
-# CONFIG_LV_USE_CLIB_MALLOC is not set
-# default:
+# CONFIG_LV_USE_BUILTIN_MALLOC is not set
+CONFIG_LV_USE_CLIB_MALLOC=y
 # CONFIG_LV_USE_MICROPYTHON_MALLOC is not set
-# default:
 # CONFIG_LV_USE_RTTHREAD_MALLOC is not set
-# default:
 # CONFIG_LV_USE_CUSTOM_MALLOC is not set
-# default:
-CONFIG_LV_USE_BUILTIN_STRING=y
-# default:
-# CONFIG_LV_USE_CLIB_STRING is not set
-# default:
+# CONFIG_LV_USE_BUILTIN_STRING is not set
+CONFIG_LV_USE_CLIB_STRING=y
 # CONFIG_LV_USE_CUSTOM_STRING is not set
-# default:
-CONFIG_LV_USE_BUILTIN_SPRINTF=y
-# default:
-# CONFIG_LV_USE_CLIB_SPRINTF is not set
-# default:
+# CONFIG_LV_USE_BUILTIN_SPRINTF is not set
+CONFIG_LV_USE_CLIB_SPRINTF=y
 # CONFIG_LV_USE_CUSTOM_SPRINTF is not set
-# default:
-CONFIG_LV_MEM_SIZE_KILOBYTES=64
-# default:
-CONFIG_LV_MEM_POOL_EXPAND_SIZE_KILOBYTES=0
-# default:
-CONFIG_LV_MEM_ADR=0x0
 # end of Memory Settings
 
 #
@@ -4502,31 +4484,23 @@ CONFIG_LV_MEM_ADR=0x0
 #
 # default:
 CONFIG_LV_DEF_REFR_PERIOD=33
-# default:
-CONFIG_LV_DPI_DEF=130
+CONFIG_LV_DPI_DEF=240
 # end of HAL Settings
 
 #
 # Operating System (OS)
 #
-# default:
-CONFIG_LV_OS_NONE=y
-# default:
+# CONFIG_LV_OS_NONE is not set
 # CONFIG_LV_OS_PTHREAD is not set
-# default:
-# CONFIG_LV_OS_FREERTOS is not set
-# default:
+CONFIG_LV_OS_FREERTOS=y
 # CONFIG_LV_OS_CMSIS_RTOS2 is not set
-# default:
 # CONFIG_LV_OS_RTTHREAD is not set
-# default:
 # CONFIG_LV_OS_WINDOWS is not set
-# default:
 # CONFIG_LV_OS_MQX is not set
-# default:
 # CONFIG_LV_OS_SDL2 is not set
-# default:
 # CONFIG_LV_OS_CUSTOM is not set
+# default:
+CONFIG_LV_USE_FREERTOS_TASK_NOTIFY=y
 # end of Operating System (OS)
 
 #
@@ -4540,6 +4514,10 @@ CONFIG_LV_DRAW_BUF_ALIGN=4
 CONFIG_LV_DRAW_LAYER_SIMPLE_BUF_SIZE=24576
 # default:
 CONFIG_LV_DRAW_LAYER_MAX_MEMORY=0
+# default:
+CONFIG_LV_DRAW_THREAD_STACK_SIZE=8192
+# default:
+CONFIG_LV_DRAW_THREAD_PRIO=3
 # default:
 CONFIG_LV_USE_DRAW_SW=y
 # default:
@@ -4580,15 +4558,10 @@ CONFIG_LV_DRAW_SW_COMPLEX=y
 CONFIG_LV_DRAW_SW_SHADOW_CACHE_SIZE=0
 # default:
 CONFIG_LV_DRAW_SW_CIRCLE_CACHE_SIZE=4
-# default:
 CONFIG_LV_DRAW_SW_ASM_NONE=y
-# default:
 # CONFIG_LV_DRAW_SW_ASM_NEON is not set
-# default:
 # CONFIG_LV_DRAW_SW_ASM_HELIUM is not set
-# default:
 # CONFIG_LV_DRAW_SW_ASM_RISCV_V is not set
-# default:
 # CONFIG_LV_DRAW_SW_ASM_CUSTOM is not set
 # default:
 CONFIG_LV_USE_DRAW_SW_ASM=0
@@ -5130,37 +5103,13 @@ CONFIG_LVGL_VERSION_PATCH=0
 #
 # Examples
 #
-# default:
-CONFIG_LV_BUILD_EXAMPLES=y
+# CONFIG_LV_BUILD_EXAMPLES is not set
 # end of Examples
 
 #
 # Demos
 #
-# default:
-CONFIG_LV_BUILD_DEMOS=y
-# default:
-# CONFIG_LV_USE_DEMO_WIDGETS is not set
-# default:
-# CONFIG_LV_USE_DEMO_KEYPAD_AND_ENCODER is not set
-# default:
-# CONFIG_LV_USE_DEMO_BENCHMARK is not set
-# default:
-# CONFIG_LV_USE_DEMO_RENDER is not set
-# default:
-# CONFIG_LV_USE_DEMO_STRESS is not set
-# default:
-# CONFIG_LV_USE_DEMO_MUSIC is not set
-# default:
-# CONFIG_LV_USE_DEMO_FLEX_LAYOUT is not set
-# default:
-# CONFIG_LV_USE_DEMO_MULTILANG is not set
-# default:
-# CONFIG_LV_USE_DEMO_SMARTWATCH is not set
-# default:
-# CONFIG_LV_USE_DEMO_EBIKE is not set
-# default:
-# CONFIG_LV_USE_DEMO_HIGH_RES is not set
+# CONFIG_LV_BUILD_DEMOS is not set
 # end of Demos
 # end of LVGL configuration
 # end of Component config
