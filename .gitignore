@@ -1,3 +1,4 @@
 build
+build_sdl
 managed_components
 .ota_revision.json

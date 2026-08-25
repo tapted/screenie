@@ -2,11 +2,12 @@
 
 #include "espbase/main_loop_task.hpp"
 #include "halpp/config.hpp"
-#include "happy/entities/system_diagnostics.hpp"
+#include "happy/entities/light.hpp"
 #include "happy/entities/ota.hpp"
+#include "happy/entities/system_diagnostics.hpp"
 #include "screenie_device.hpp"
 #include "screenie_hardware.hpp"
-  
+
 using halpp::config;
 
 static HAPPY::Entities::SystemDiagnostics* diagnostics = nullptr;
