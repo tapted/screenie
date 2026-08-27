@@ -28,4 +28,4 @@ target_include_directories(${COMPONENT_LIB} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/happy/src
 )
 
-target_compile_options(${COMPONENT_LIB} PRIVATE -Wall -W -Wextra -Wunused)
+target_compile_options(${COMPONENT_LIB} PRIVATE -Wall -W -Wextra -Wunused -fno-use-cxa-atexit)
