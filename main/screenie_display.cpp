@@ -54,7 +54,7 @@ static void show_screenie_test_label() {
 
   // 2. MOTD label (Line 1)
   motd_label = lv_label_create(main_cont);
-  const char* message = "Dongley - KPop Demon Hunters Edition!    ";
+  const char* message = "Screenie";
   lv_label_set_text_static(motd_label, message);
   lv_obj_set_width(motd_label, DISPLAY_WIDTH);
   lv_label_set_long_mode(motd_label, LV_LABEL_LONG_SCROLL_CIRCULAR);
