@@ -10,7 +10,7 @@ struct config : detail::Defaults {
   struct Display : detail::Defaults::Display {
     static constexpr uint16_t WIDTH = 172;
     static constexpr uint16_t HEIGHT = 320;
-    static constexpr bool INVERT_COLORS = false;
+    static constexpr bool INVERT_COLORS = true;
     static constexpr uint8_t BACKLIGHT_DEFAULT = 30;
   };
   struct lvgl : detail::Defaults::lvgl {
