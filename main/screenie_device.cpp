@@ -3,7 +3,7 @@
 #include <mqtt_client.h>
 
 #include "halpp/config.hpp"
-#include "halpp/display/st7789.hpp"
+#include "halpp/display/spi_display.hpp"
 #include "halpp/led_strip/led_effects.hpp"
 #include "halpp/led_strip/led_strip.hpp"
 #include "happy/entities/light.hpp"
@@ -53,7 +53,8 @@ EspResult<> screenie_device_begin() {
 
 static void on_backlight_update(const HAPPY::Entities::Light& light) {
   uint8_t brightness = static_cast<uint32_t>(light.brightness()) * 100 / 255;
-  halpp::St7789::default_instance().set_backlight(light.is_on(), brightness);
+  halpp::SpiDisplay::default_instance().set_backlight(
+      light.is_on() ? halpp::BacklightState::On : halpp::BacklightState::Off, brightness);
 }
 
 static void on_light_update(const HAPPY::Entities::Light& light) {

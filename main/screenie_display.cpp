@@ -4,11 +4,12 @@
 
 #include "espbase/boot/ota_rollback_watchdog.hpp"
 #include "espbase/esp_task.hpp"
+#include "halpp/config.hpp"
 #include "halpp/display/display.hpp"
-#include "halpp/display/st7789.hpp"
+#include "halpp/display/spi_display.hpp"
+#include "happy/entities/system_diagnostics.hpp"
 #include "happy/entities/text.hpp"
 #include "widgets/label/lv_label.h"
-#include "halpp/config.hpp"
 
 static constexpr char TAG[] = "ScreenieDisplay";
 static constexpr int DISPLAY_WIDTH = halpp::config::Display::WIDTH;
@@ -85,17 +86,23 @@ static void show_screenie_test_label() {
   lv_label_set_text_static(footer_label, "Footer text here");
   lv_obj_set_width(footer_label, DISPLAY_WIDTH);
   lv_label_set_long_mode(footer_label, LV_LABEL_LONG_SCROLL_CIRCULAR);
+
+  HAPPY::Entities::on_core_temperature_change = [](HAPPY::Entities::Sensor& sensor,
+                                                   std::string_view value) {
+    halpp::Display::Guard lock;
+    lv_label_set_text_fmt(temperature_label, "%.*s°C", value.size(), value.data());
+  };
 }
 
 void init_screenie_display() {
   EspTask<int> display_init_task;
   display_init_task.start(0, [](auto&) {
     // Initialize the display in parallel.
-    if (EspError err = halpp::St7789::init_default_spi()) {
+    if (EspError err = halpp::SpiDisplay::init_default_spi()) {
       err.log(TAG, "Failed to init ST7789 display; won't start lvgl task");
       return;
     }
-    if (EspError err = halpp::St7789::default_instance().init_lvgl()) {
+    if (EspError err = halpp::SpiDisplay::default_instance().init_lvgl()) {
       err.log(TAG, "Failed to init LVGL display.");
       return;
     }
@@ -104,23 +111,16 @@ void init_screenie_display() {
   });
 }
 
-void set_display_temperature(const std::string& temp_str) {
-  halpp::Display::Guard lock;
-  if (temperature_label) {
-    lv_label_set_text_fmt(temperature_label, "%s°C", temp_str.c_str());
-  }
-}
-
-void set_display_humidity(const std::string& hum_str) {
+void set_display_humidity(std::string_view hum_str) {
   halpp::Display::Guard lock;
   if (humidity_label) {
-    lv_label_set_text_fmt(humidity_label, "%s%%", hum_str.c_str());
+    lv_label_set_text_fmt(humidity_label, "%.*s%%", hum_str.size(), hum_str.data());
   }
 }
 
-void set_display_footer(const std::string& footer_str) {
+void set_display_footer(std::string_view footer_str) {
   halpp::Display::Guard lock;
   if (footer_label) {
-    lv_label_set_text(footer_label, footer_str.c_str());
+    lv_label_set_text_fmt(footer_label, "%.*s", footer_str.size(), footer_str.data());
   }
 }
