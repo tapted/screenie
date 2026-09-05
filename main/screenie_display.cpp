@@ -6,7 +6,6 @@
 #include "espbase/esp_task.hpp"
 #include "halpp/config.hpp"
 #include "halpp/display/display.hpp"
-#include "halpp/display/spi_display.hpp"
 #include "happy/entities/system_diagnostics.hpp"
 #include "happy/entities/text.hpp"
 #include "widgets/label/lv_label.h"
@@ -98,11 +97,11 @@ void init_screenie_display() {
   EspTask<int> display_init_task;
   display_init_task.start(0, [](auto&) {
     // Initialize the display in parallel.
-    if (EspError err = halpp::SpiDisplay::init_default_spi()) {
+    if (EspError err = halpp::Display::init_default()) {
       err.log(TAG, "Failed to init ST7789 display; won't start lvgl task");
       return;
     }
-    if (EspError err = halpp::SpiDisplay::default_instance().init_lvgl()) {
+    if (EspError err = halpp::Display::instance().init_lvgl()) {
       err.log(TAG, "Failed to init LVGL display.");
       return;
     }
