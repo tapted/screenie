@@ -1,7 +1,6 @@
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 file(GLOB_RECURSE DEPS_SRCS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../deps/espbase/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/display/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/gpio/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/i2c/*.cpp
@@ -19,11 +18,13 @@ file(GLOB_RECURSE MAIN_SRCS
 
 set(PROJECT_SOURCES ${MAIN_SRCS} ${DEPS_SRCS})
 
-idf_component_register(SRCS ${PROJECT_SOURCES} INCLUDE_DIRS ".")
+idf_component_register(
+    SRCS ${PROJECT_SOURCES}
+    INCLUDE_DIRS "."
+    REQUIRES espbase led_strip esp_hw_support esp_driver_ledc esp_netif esp_wifi esp_lcd esp_https_ota esp_driver_tsens wpa_supplicant esp_driver_i2s)
 
 target_include_directories(${COMPONENT_LIB} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
-    ${CMAKE_CURRENT_SOURCE_DIR}/../deps/espbase/src
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/happy/src
 )
