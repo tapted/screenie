@@ -8,9 +8,6 @@
 namespace halpp::board {
 
 struct config : detail::Defaults {
-  struct System : detail::Defaults::System {
-    static constexpr gpio_num_t PIN_KEY = GPIO_NUM_9;
-  };
   struct SpiBus : detail::Defaults::SpiBus {
     static constexpr uint32_t SPI_CLK_WRITE_HZ = 40 * 1000 * 1000;  // 40MHz for write
   };
