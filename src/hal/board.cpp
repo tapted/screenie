@@ -16,7 +16,7 @@ static_assert(GPIO_NUM_9 == config::System::PIN_BOOT);
 // static_assert(GPIO_NUM_11 == config::I2CConfig::PIN_SDA);
 // static_assert(GPIO_NUM_12 == available?); USB D-
 // static_assert(GPIO_NUM_13 == available?); USB D+
-static_assert(GPIO_NUM_14 == config::SpiBus::PIN_CHIP_SELECT);
+static_assert(GPIO_NUM_14 == config::Display::PIN_CHIP_SELECT);
 static_assert(GPIO_NUM_15 == config::Display::PIN_DATA_COMMAND);
 static_assert(GPIO_NUM_16 == config::Usb::PIN_UART_TX);
 static_assert(GPIO_NUM_17 == config::Usb::PIN_UART_RX);

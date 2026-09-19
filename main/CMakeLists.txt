@@ -8,6 +8,7 @@ file(GLOB_RECURSE DEPS_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/led_strip/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/network/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/buzzer/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/../deps/halpp/src/halpp/rfid/pn532.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../deps/happy/src/*.cpp
 )
 
