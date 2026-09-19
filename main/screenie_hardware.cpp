@@ -15,8 +15,7 @@ void init_screenie_hardware() {
                                     .auto_refresh = true,
                                 })
       .log_error("screenie_hardware", "LedStrip init");
-  halpp::Passive::init_default({.gpio_num = halpp::config::Buzzer::PIN_PWM})
-      .log_error("screenie_hardware", "Passive Buzzer init");
+  halpp::Passive::init_default().log_error("screenie_hardware", "Passive Buzzer init");
 
   main_loop.push_func(
       [](void*) { halpp::Passive::default_instance().play(halpp::beeps::acknowledge); });
