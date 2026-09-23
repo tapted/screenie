@@ -29,7 +29,7 @@ static void on_tag_callback(void*, halpp::Pn532& pn532, std::span<const uint8_t>
     for (size_t i = 0; i < uid.size(); ++i) {
       tag_id = (tag_id << 8) | uid[i];
     }
-
+    halpp::Passive::default_instance().play(halpp::beeps::success);
     ESP_LOGI("APP", "Tag Scanned! Length: %d, ID: %016" PRIX64, uid.size(), tag_id);
   }
   main_loop.post_delayed<&halpp::Pn532::start_passive_target_read>(1000, &pn532);
